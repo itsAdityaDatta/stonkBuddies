@@ -1,0 +1,39 @@
+<br><br>
+<div class="user-profile">
+	<img class="avatar" src="{{user.image}}"/>
+  <div class="username">{{user.displayName}}</div>
+  <div class="bio">
+  	{{user.email}}
+  </div>
+  <div class="description z-depth-1">
+      First Name: {{user.firstName}}<br>
+      Last Name: {{user.lastName}}<br>
+      Joined: {{formatDate createdAt 'Do MMMM YYYY (h:mm a)'}}<br>
+  </div>
+
+  <div class="groupList z-depth-1">GroupList:</div>
+  <div class="groupTable z-depth-1">
+    {{#if groups}}
+        <table class='striped'>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each groups}}
+                    <tr class="hoverable">
+                        <td><a href="/groups/{{_id}}">{{title}}</a></td>
+                        <td>{{formatDate createdAt 'Do MMMM YYYY, h:mm a'}}</td>
+                        <td><span class="dash-status">{{status}}</span></td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    {{else}}
+        <p>{{user.displayName}} doesn't have any groups yet</p>
+    {{/if}}
+  </div>
+</div>

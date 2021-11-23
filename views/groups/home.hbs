@@ -1,0 +1,112 @@
+<div class="custFont">
+        <h5>{{group.title}}</h5>
+        <p>{{group.body}}</p>
+        
+        <div class="divider"></div>
+        <br>
+        <div class="row">
+            <div class="col m8 s12">
+                <p class="custFontAbel">Add new stocks:</p>
+
+                <form class="col s12 addStocks" method="POST" action="/groups/add/{{group._id}}"> 
+                    <div class="input-field col s9 m9">
+                        <input id="stock_name" name="stock_name" type="text">
+                        <label for="stock_name">Stock Name</label>
+                    </div>          
+                    
+                    <div class="input-field col s3 m3 right-align m2">
+                        <input type="submit" value="Add" class="btn z-depth-0 blue darken-1">
+                    </div>            
+                </form>
+                <h5 class="custFontAbel">CHARTS:</h5>
+                <br>
+                <div class='col s12' id='charts' class="charts"> </div>
+
+
+            </div>
+            <div class="col m4 s12 custMembers">
+                <div class="collection custFontAbel">
+                    <div class="collectionHeading">Group Members</div>
+
+                    {{#each user}}
+                        <a class="collection-item eachMember" href="/users/{{_id}}">{{displayName}}</a>
+                    {{/each}}
+                </div>
+                
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+    <script> 
+        $(document).ready(function(){
+            
+            const chartProperties = {
+                width: 600,
+                height: 300,
+                timeScale:{
+                    timeVisible: true,
+                    secondsVisible: false
+                }
+
+            };
+            let arr = [];
+            arr = Array('{{group.stocks}}');
+
+            let stocksArr = arr[0].split(',');
+
+            let counter = 0;
+            stocksArr = stocksArr.filter( function( item, index, inputArray ) {
+                return inputArray.indexOf(item) == index;
+            });
+
+            stocksArr.sort();
+            stocksArr.forEach(async Element =>{
+
+                let url1 = "https://api.binance.com/api/v3/klines?symbol=";
+                let url2 = "USDT&interval=1d&limit=1000";
+                let url = url1 + Element.toString() + url2;
+                fetch(url)
+                        .then(res => res.json())
+                        .then(data =>{
+                            const cdata = data.map(d => {
+                                return {time:d[0]/1000, open:parseFloat(d[1]), high:parseFloat(d[2]), low:parseFloat(d[3]), close:parseFloat(d[4])}
+                            });
+                            let div = document.createElement('div');
+                            let domElement = 'chart'+counter;
+                            div.setAttribute('id', domElement);
+                            div.setAttribute('class', 'custChart');
+                            document.getElementById('charts').appendChild(div);
+
+
+                            let p = document.createElement('p');
+                            p.innerHTML = "stockName: " + Element.toString() + "<br>" + "open: " +  cdata[cdata.length-1].open + "<br>" + "close: " +  cdata[cdata.length-1].close + "<br><br><br>";
+                            let domElement2 = 'p'+counter;
+                            div.setAttribute('id', domElement2);
+                            document.getElementById('charts').appendChild(p);
+
+                            
+
+                            let chart = LightweightCharts.createChart(div, chartProperties);
+                        
+                            let candleSeries = chart.addCandlestickSeries();
+
+                            counter++;
+                            candleSeries.setData(cdata);
+                            chart.timeScale().fitContent();
+                        })
+                        .catch((err) => {
+                            // remove krne hai database mein se jo nhi fetch ho rahe
+                        }); 
+
+            });
+            
+            
+
+        });
+       
+    </script>

@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name='viewport' content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+  <link rel='stylesheet' href="/css/style.css">
+  <title>stonkBuddies | {{title}} </title>
+  <meta name="description" content="sonpari">
+  <meta name="author" content="SitePoint">
+
+</head>
+
+<body class="main-layout">
+
+     {{! Waves waalaa background sexy saaa  }}
+    <div class="background" style="z-index: -1;">
+        <svg viewBox="-40 -10 300 130" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+            <path d="M-53.95,150.09 C303.27,132.32 204.51,0.10 500.22,0.10 L500.00,150.00 L296.50,159.96 Z" style="stroke: none; fill: rgb(0, 81, 151);"></path>
+        </svg>
+    </div>
+
+
+    <div class="background" style="z-index: -2;">
+        <svg viewBox="10 -15 300 130" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+            <path d="M-53.95,150.09 C303.27,132.32 204.51,0.10 500.22,0.10 L500.00,150.00 L296.50,159.96 Z" style="stroke: none; fill: #08f;"></path>
+        </svg>
+    </div>
+
+    <div class="background" style="z-index: -3;">
+        <svg viewBox="30 -5 250 130" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+            <path d="M-53.95,150.09 C303.27,132.32 204.51,0.10 500.22,0.10 L500.00,150.00 L296.50,159.96 Z" style="stroke: none; fill: rgb(126, 195, 255);"></path>
+        </svg>
+    </div>
+
+
+    <div class="bg-image"></div>
+    {{> _header}}
+    {{> _add_btn}}
+
+    <div class="container">
+        {{{body}}}
+    </div>
+
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        M.Sidenav.init(document.querySelector('.sidenav'));
+        M.FormSelect.init(document.querySelector('#status'));
+    </script>
+</body>
+</html>

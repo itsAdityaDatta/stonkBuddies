@@ -1,0 +1,94 @@
+p{
+    margin: 10px 0 !important;
+}
+
+.navbar-custom{
+    height: 50px;
+}
+
+.post-input{
+    border: 1px solid black;
+}
+
+.custFont{
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+.custFontAbel{
+    font-family: 'Abel', sans-serif;
+}
+
+.viewGroup{
+    width: 100%;
+}
+
+.cardTitle{
+    font-size: 24px;
+}
+
+.custChip{
+    overflow: hidden;
+}
+
+.background{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+.custMembers{
+    background-color: white;
+    font-size: 16px;
+    margin-top: 28px;
+    color: black !important;
+}
+
+.collectionHeading{
+    background-color: rgb(4, 110, 202);
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+}
+.eachMember{
+    color: black !important;
+}
+.addStocks{
+    padding: 10px !important;
+    border: 2px solid black;
+    margin-bottom: 30px;
+}
+
+.addGroup{
+    background-color: white; 
+    padding:20px; 
+    margin-top:10px;
+}
+.username{
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.bio{
+  font-weight:200;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.description{
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.groupList{
+  background-color: rgb(57, 124, 182);
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.groupTable{
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 40px;
+}

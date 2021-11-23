@@ -1,0 +1,29 @@
+<div class="custFont publicGroups">
+    <h5>Public Groups</h5>
+    <p>Here's the list of public groups that you can potentially join.</p>
+    <div class="divider"></div>
+    <br>
+    <div class="row">
+        {{#each groups}}
+            <div class="col s12 m4">
+                <div class="card hoverable custCard">
+                    <div class="card-content center-align" style="overflow: hidden;">
+                        <a class="cardTitle" href="/groups/{{_id}}">{{title}}</a>
+                        <p>{{truncate (stripTags body) 22}}<br></p>
+                        <p>created: {{formatDate createdAt 'Do MMMM YYYY (h:mm a)'}}</p>
+                        <div class="divider"></div>
+                        <br>
+                        <div class="chip z-depth-0 custChip">
+                            {{! we're able to use user.image because of the relation we created in the models }}
+                            <img src="{{creator.image}}">
+                            <a href="/users/{{creator._id}}">{{creator.displayName}}</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        {{else}}
+            <p>No Groups to display</p>
+        {{/each}}
+    </div>
+</div>

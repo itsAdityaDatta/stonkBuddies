@@ -1,0 +1,42 @@
+<div class="custFont">
+    <br>
+    <h5 class="custFontAbel">Edit Group</h5>
+    <p class="custFontAbel">Edit group's title or description</p>
+
+    <div class="row z-depth-1 addGroup">
+        <form action="/groups/{{group._id}}" method="POST" class="col s12">
+            <input type="hidden" name="_method" value="PUT">
+            <div class="row">
+                <div class="input-field">
+                    <input type="text" id="title" name="title" value="{{group.title}}">
+                    <label for="title">Title</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field">
+                    <input type="text" id="body" name="body" value="{{group.body}}">
+                    <label for="body">Description</label>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="input-field">
+                    <select id="status" name="status">
+                        <option value="public" selected>Public</option>
+                        <option value="public">Private</option>
+                    </select>
+                    <label for="status">Status</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <input type="submit" value="Save" class="btn z-depth-0">
+                <a href="/dashboard" class="btn orange z-depth-0">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+
+</div>

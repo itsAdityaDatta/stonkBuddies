@@ -1,0 +1,33 @@
+<div class="custFont dashboard">
+    <h5>Hello {{name}}, welcome to stonkBuddies. </h5>
+
+    <p>This is your Dashboard. Here are all of your joined groups</p>
+    <div class="divider"></div>
+    <br>
+    {{#if groups}}
+        <table class='striped'>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Creator</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each groups}}
+                    <tr class="hoverable">
+                        <td><a href="/groups/{{_id}}">{{title}}</a></td>
+                        <td>{{formatDate createdAt 'Do MMMM YYYY, h:mm a'}}</td>
+                        <td><span class="dash-status">{{status}}</span></td>
+                        <td><a href="/users/{{creator._id}}">{{creator.displayName}}</span></td>
+                        <td><a  href="/groups/edit/{{_id}}">edit</a></td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    {{else}}
+        <p>You don't have any groups yet</p>
+    {{/if}}
+</div>
